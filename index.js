@@ -50,7 +50,7 @@ mid = Math.floor(sub4.length / 2);
     nums = [...sub4].sort((a, b) => a - b);
  let sub4Avg = sub4.length % 2 !== 0 ? nums[mid] : (Number(nums[mid - 1]) + Number(nums[mid])) / 2;
  let sub4mid = (sub4Max + sub4Min)/2
-var sub4Threshold = (sub4Avg + sub4Max + sub4mid)/3 ;
+var sub4Threshold = (sub4Avg  + sub4Max + sub4mid ) /3 ;
 let peaks4 = sub4.filter((el,index)=>el>sub4Threshold && el > sub4[index - 1] && el > sub4[index + 1] );
 //Algorithm2 sub1
 let sub1Diff = [];
@@ -206,5 +206,4 @@ app.get("/getData", (request, response) => {
         sub4:sub4, peaks4:peaks4.length, sub4Alg2:sub4Alg2,peaks4Alg2:peaks4Alg2.filter((el)=>el>0).length
     })
 });
-console.log(peaks1.length, peaks2.length, peaks3.length, peaks4.length)
 app.listen(PORT, () => console.log("The server is started"));
