@@ -19,26 +19,38 @@ let sub4 = readFileLines('subj4.txt');
 //Algorithm 1 sub1
 let sub1Min = Math.min(...sub1);
 let sub1Max = Math.max(...sub1);
-let sub1Avg = (sub1Max + sub1Min) / 2;
-var sub1Threshold = (sub1Avg + sub1Max)/2;
+let mid = Math.floor(sub1.length / 2);
+    let nums = [...sub1].sort((a, b) => a - b);
+  let sub1Avg = sub1.length % 2 !== 0 ? nums[mid] : (Number(nums[mid - 1]) + Number(nums[mid])) / 2;
+  let sub1mid = (sub1Max + sub1Min)/2
+  var sub1Threshold = (sub1Avg + sub1Max + sub1mid)/3 ;
 let peaks1 = sub1.filter((el,index)=>el>sub1Threshold && el > sub1[index - 1] && el > sub1[index + 1] );
 //Algorithm 1 sub2
 let sub2Min = Math.min(...sub2);
 let sub2Max = Math.max(...sub2);
-let sub2Avg = (sub2Max + sub2Min) / 2;
-var sub2Threshold = (sub2Avg + sub2Max)/2 ;
+ mid = Math.floor(sub2.length / 2);
+     nums = [...sub2].sort((a, b) => a - b);
+  let sub2Avg = sub2.length % 2 !== 0 ? nums[mid] : (Number(nums[mid - 1]) + Number(nums[mid])) / 2;
+  let sub2mid = (sub2Max + sub2Min)/2
+  var sub2Threshold = (sub2Avg + sub2Max + sub2mid)/3 ;
 let peaks2 = sub2.filter((el,index)=>el>sub2Threshold && el > sub2[index - 1] && el > sub2[index + 1] );
 //Algorithm 1 sub3
 let sub3Min = Math.min(...sub3);
 let sub3Max = Math.max(...sub3);
-let sub3Avg = (sub3Max + sub3Min) / 2;
-var sub3Threshold = (sub3Avg + sub3Max)/2 ;
+mid = Math.floor(sub3.length / 2);
+    nums = [...sub3].sort((a, b) => a - b);
+ let sub3Avg = sub3.length % 2 !== 0 ? nums[mid] : (Number(nums[mid - 1]) + Number(nums[mid])) / 2;
+ let sub3mid = (sub3Max + sub3Min)/2
+var sub3Threshold = (sub3Avg + sub3Max + sub3mid)/3 ;
 let peaks3 = sub3.filter((el,index)=>el>sub3Threshold && el > sub3[index - 1] && el > sub3[index + 1] );
 //Algorithm 1 sub4
 let sub4Min = Math.min(...sub4);
 let sub4Max = Math.max(...sub4);
-let sub4Avg = (sub4Max + sub4Min) / 2;
-var sub4Threshold = (sub4Avg + sub4Max)/2 ;
+mid = Math.floor(sub4.length / 2);
+    nums = [...sub4].sort((a, b) => a - b);
+ let sub4Avg = sub4.length % 2 !== 0 ? nums[mid] : (Number(nums[mid - 1]) + Number(nums[mid])) / 2;
+ let sub4mid = (sub4Max + sub4Min)/2
+var sub4Threshold = (sub4Avg + sub4Max + sub4mid)/3 ;
 let peaks4 = sub4.filter((el,index)=>el>sub4Threshold && el > sub4[index - 1] && el > sub4[index + 1] );
 //Algorithm2 sub1
 let sub1Diff = [];
@@ -194,4 +206,5 @@ app.get("/getData", (request, response) => {
         sub4:sub4, peaks4:peaks4.length, sub4Alg2:sub4Alg2,peaks4Alg2:peaks4Alg2.filter((el)=>el>0).length
     })
 });
+console.log(peaks1.length, peaks2.length, peaks3.length, peaks4.length)
 app.listen(PORT, () => console.log("The server is started"));
