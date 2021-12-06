@@ -14,17 +14,25 @@ const readFileLines = filename =>
    .map((element)=>element.trim());
 let sub1 = readFileLines('subj1.txt').filter((el,index)=>index<60000);
 let sub2 = readFileLines('subj2.txt').filter((el,index)=>index < 30000 );
-//Algorithm 1
+let sub3 = readFileLines('subj3.txt');
+//Algorithm 1 sub1
 let sub1Min = Math.min(...sub1);
 let sub1Max = Math.max(...sub1);
 let sub1Avg = (sub1Max + sub1Min) / 2;
 var sub1Threshold = sub1Avg ;
 let peaks1 = sub1.filter((el,index)=>el>sub1Threshold && el > sub1[index - 1] && el > sub1[index + 1] );
+//Algorithm 1 sub2
 let sub2Min = Math.min(...sub2);
 let sub2Max = Math.max(...sub2);
 let sub2Avg = (sub2Max + sub2Min) / 2;
 var sub2Threshold = sub2Avg ;
 let peaks2 = sub2.filter((el,index)=>el>sub2Threshold && el > sub2[index - 1] && el > sub2[index + 1] );
+//Algorithm 1 sub3
+let sub3Min = Math.min(...sub3);
+let sub3Max = Math.max(...sub3);
+let sub3Avg = (sub3Max + sub3Min) / 2;
+var sub3Threshold = sub3Avg ;
+let peaks3 = sub3.filter((el,index)=>el>sub3Threshold && el > sub3[index - 1] && el > sub3[index + 1] );
 //Algorithm2 sub1
 let sub1Diff = [];
 let sub1DoubleDiff = [];
@@ -100,8 +108,46 @@ for(let i=0;i<peaks2Alg2.length-200 ;i++){
             }
         }
 };
+//algorithm2 sub3
+let sub3Diff = [];
+let sub3DoubleDiff = [];
+let sub3DoubleDiffSquare = [];
+for(let i = 0; i<sub3.length - 1;i++){
+    sub3Diff[i] = sub3[i+1] - sub3[i];
+}
+for(let i = 0; i<sub3Diff.length - 1;i++){
+    sub3DoubleDiff[i] = sub3Diff[i+1] - sub3Diff[i];
+    sub3DoubleDiffSquare[i] = sub3DoubleDiff[i]**2
+}
+let sub3Alg2 = sub3DoubleDiffSquare
+let sub3Alg2Min = Math.min(...sub3Alg2);
+let sub3Alg2Max = Math.max(...sub3Alg2);
+let sub3Alg2Avg = (sub3Alg2Max + sub3Alg2Min) / 2;
+var sub3Alg2Threshold = sub3Alg2Avg/2 ;
+let peaks3Alg2 = [];
+for(let i=1;i<sub3Alg2.length-1;i++){
+    if(sub3Alg2[i] > sub3Alg2Threshold && sub3Alg2[i] > sub3Alg2[i - 1] && sub3Alg2[i] > sub3Alg2[i + 1])
+    peaks3Alg2.push(sub3Alg2[i])
+    else peaks3Alg2.push(0)
+}
+for(let i=0;i<peaks3Alg2.length-200 ;i++){
+    let lastMax = 0;
+    let lastMaxIndex = 0;
+        for(let j=i;j<i + 200;j++){
+            if(peaks3Alg2[j] > 0 && peaks3Alg2[j] <= lastMax){
+                peaks3Alg2[j] = 0;
+            }
+           else if(peaks3Alg2[j] > 0 && peaks3Alg2[j] > lastMax){
+                peaks3Alg2[lastMaxIndex] = 0;
+                lastMax = peaks2Alg2[j];
+                lastMaxIndex = j;
+            }
+        }
+};
 app.get("/getData", (request, response) => {
     response.send({sub1:sub1, peaks1:peaks1, sub1Alg2:sub1Alg2,peaks1Alg2:peaks1Alg2.filter((el)=>el>0),
-        sub2:sub2, peaks2:peaks2, sub2Alg2:sub2Alg2,peaks2Alg2:peaks2Alg2.filter((el)=>el>0)})
+        sub2:sub2, peaks2:peaks2, sub2Alg2:sub2Alg2,peaks2Alg2:peaks2Alg2.filter((el)=>el>0),
+        sub3:sub3, peaks3:peaks3, sub3Alg2:sub3Alg2,peaks3Alg2:peaks3Alg2.filter((el)=>el>0)
+    })
 });
 app.listen(PORT, () => console.log("The server is started"));
