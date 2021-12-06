@@ -145,9 +145,9 @@ for(let i=0;i<peaks3Alg2.length-75 ;i++){
         }
 };
 app.get("/getData", (request, response) => {
-    response.send({sub1:sub1, peaks1:peaks1, sub1Alg2:sub1Alg2,peaks1Alg2:peaks1Alg2.filter((el)=>el>0).length,
-        sub2:sub2, peaks2:peaks2, sub2Alg2:sub2Alg2,peaks2Alg2:peaks2Alg2.filter((el)=>el>0).length,
-        sub3:sub3, peaks3:peaks3, sub3Alg2:sub3Alg2,peaks3Alg2:peaks3Alg2.filter((el)=>el>0).length
+    response.send({sub1:sub1, peaks1:peaks1.length, sub1Alg2:sub1Alg2,peaks1Alg2:peaks1Alg2.filter((el)=>el>0).length,
+        sub2:sub2, peaks2:peaks2.length, sub2Alg2:sub2Alg2,peaks2Alg2:peaks2Alg2.filter((el)=>el>0).length,
+        sub3:sub3, peaks3:peaks3.length, sub3Alg2:sub3Alg2,peaks3Alg2:peaks3Alg2.filter((el)=>el>0).length
     })
 });
 app.listen(PORT, () => console.log("The server is started"));
