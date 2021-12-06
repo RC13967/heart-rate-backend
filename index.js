@@ -1,10 +1,12 @@
 import express from "express";
 const app = express();
 app.use(express.json());
+import dotenv from "dotenv";
+dotenv.config();
 import cors from "cors";
 app.use(cors());
 import fs from "fs";
-const PORT = 4000;
+const PORT = process.env.PORT;
 const readFileLines = filename =>
    fs.readFileSync(filename)
    .toString('UTF8')
