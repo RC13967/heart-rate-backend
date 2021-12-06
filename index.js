@@ -19,19 +19,19 @@ let sub3 = readFileLines('subj3.txt');
 let sub1Min = Math.min(...sub1);
 let sub1Max = Math.max(...sub1);
 let sub1Avg = (sub1Max + sub1Min) / 2;
-var sub1Threshold = sub1Avg ;
+var sub1Threshold = (sub1Avg + sub1Max)/2;
 let peaks1 = sub1.filter((el,index)=>el>sub1Threshold && el > sub1[index - 1] && el > sub1[index + 1] );
 //Algorithm 1 sub2
 let sub2Min = Math.min(...sub2);
 let sub2Max = Math.max(...sub2);
 let sub2Avg = (sub2Max + sub2Min) / 2;
-var sub2Threshold = sub2Avg ;
+var sub2Threshold = (sub2Avg + sub2Max)/2 ;
 let peaks2 = sub2.filter((el,index)=>el>sub2Threshold && el > sub2[index - 1] && el > sub2[index + 1] );
 //Algorithm 1 sub3
 let sub3Min = Math.min(...sub3);
 let sub3Max = Math.max(...sub3);
 let sub3Avg = (sub3Max + sub3Min) / 2;
-var sub3Threshold = sub3Avg ;
+var sub3Threshold = (sub3Avg + sub3Max)/2 ;
 let peaks3 = sub3.filter((el,index)=>el>sub3Threshold && el > sub3[index - 1] && el > sub3[index + 1] );
 //Algorithm2 sub1
 let sub1Diff = [];
