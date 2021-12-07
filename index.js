@@ -12,8 +12,7 @@ const readFileLines = filename =>
    .toString('UTF8')
    .split('\n')
    .map((element)=>element.trim());
-// let sub1 = readFileLines('subj1.txt').filter((el,index)=>index<60000);
-let sub1 = readFileLines('subj1.txt');
+let sub1 = readFileLines('subj1.txt').filter((el,index)=>index<60000);
 let sub2 = readFileLines('subj2.txt').filter((el,index)=>index < 30000 );
 let sub3 = readFileLines('subj3.txt');
 let sub4 = readFileLines('subj4.txt');
@@ -68,17 +67,17 @@ let sub1Alg2 = sub1DoubleDiffSquare
 let sub1Alg2Min = Math.min(...sub1Alg2);
 let sub1Alg2Max = Math.max(...sub1Alg2);
 let sub1Alg2Avg = (sub1Alg2Max + sub1Alg2Min) / 2;
-var sub1Alg2Threshold = (sub1Alg2Avg + sub1Alg2Min)/3 ;
+var sub1Alg2Threshold = sub1Alg2Avg/2 ;
 let peaks1Alg2 = [];
 for(let i=1;i<sub1Alg2.length-1;i++){
     if(sub1Alg2[i] > sub1Alg2Threshold && sub1Alg2[i] > sub1Alg2[i - 1] && sub1Alg2[i] > sub1Alg2[i + 1])
     peaks1Alg2.push(sub1Alg2[i])
     else peaks1Alg2.push(0)
 }
-for(let i=0;i<peaks1Alg2.length-1000 ;i++){
+for(let i=0;i<peaks1Alg2.length-500 ;i++){
     let lastMax = 0;
     let lastMaxIndex = 0;
-        for(let j=i;j<i + 1000;j++){
+        for(let j=i;j<i + 500;j++){
             if(peaks1Alg2[j] > 0 && peaks1Alg2[j] <= lastMax){
                 peaks1Alg2[j] = 0;
             }
@@ -107,7 +106,7 @@ let sub2Alg2 = sub2DoubleDiffSquare
 let sub2Alg2Min = Math.min(...sub2Alg2);
 let sub2Alg2Max = Math.max(...sub2Alg2);
 let sub2Alg2Avg = (sub2Alg2Max + sub2Alg2Min) / 2;
-var sub2Alg2Threshold = (sub2Alg2Avg + sub2Alg2Min)/3 ;
+var sub2Alg2Threshold = sub2Alg2Avg/2 ;
 let peaks2Alg2 = [];
 for(let i=1;i<sub2Alg2.length-1;i++){
     if(sub2Alg2[i] > sub2Alg2Threshold && sub2Alg2[i] > sub2Alg2[i - 1] && sub2Alg2[i] > sub2Alg2[i + 1])
@@ -143,7 +142,7 @@ let sub3Alg2 = sub3DoubleDiffSquare
 let sub3Alg2Min = Math.min(...sub3Alg2);
 let sub3Alg2Max = Math.max(...sub3Alg2);
 let sub3Alg2Avg = (sub3Alg2Max + sub3Alg2Min) / 2;
-var sub3Alg2Threshold = (sub3Alg2Avg + sub3Alg2Min)/3 ;
+var sub3Alg2Threshold = sub3Alg2Avg/2 ;
 let peaks3Alg2 = [];
 for(let i=1;i<sub3Alg2.length-1;i++){
     if(sub3Alg2[i] > sub3Alg2Threshold && sub3Alg2[i] > sub3Alg2[i - 1] && sub3Alg2[i] > sub3Alg2[i + 1])
@@ -179,7 +178,7 @@ let sub4Alg2 = sub4DoubleDiffSquare
 let sub4Alg2Min = Math.min(...sub4Alg2);
 let sub4Alg2Max = Math.max(...sub4Alg2);
 let sub4Alg2Avg = (sub4Alg2Max + sub4Alg2Min) / 2;
-var sub4Alg2Threshold = (sub4Alg2Avg + sub4Alg2Min)/3 ;
+var sub4Alg2Threshold = sub4Alg2Avg/2 ;
 let peaks4Alg2 = [];
 for(let i=1;i<sub4Alg2.length-1;i++){
     if(sub4Alg2[i] > sub4Alg2Threshold && sub4Alg2[i] > sub4Alg2[i - 1] && sub4Alg2[i] > sub4Alg2[i + 1])
