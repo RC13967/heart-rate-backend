@@ -12,7 +12,8 @@ const readFileLines = filename =>
    .toString('UTF8')
    .split('\n')
    .map((element)=>element.trim());
-let sub1 = readFileLines('subj1.txt').filter((el,index)=>index<60000);
+// let sub1 = readFileLines('subj1.txt').filter((el,index)=>index<60000);
+let sub1 = readFileLines('subj1.txt')
 let sub2 = readFileLines('subj2.txt').filter((el,index)=>index < 30000 );
 let sub3 = readFileLines('subj3.txt');
 let sub4 = readFileLines('subj4.txt');
