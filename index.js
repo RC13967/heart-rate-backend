@@ -202,16 +202,16 @@ for(let i=0;i<peaks4Alg2.length-200 ;i++){
 app.get("/getData", (request, response) => {
     response.send({sub1:sub1, peaks1:peaks1.length, sub1Alg2:sub1Alg2,peaks1Alg2:peaks1Alg2.filter((el)=>el>0).length,
         sub1Max:sub1Max, sub1Min:sub1Min, sub1Alg2Max:sub1Alg2Max, sub1Alg2Min:sub1Alg2Min,
-        x1Max:sub1[sub1.length-1],x1Alg2Max:sub1Alg2[sub1Alg2.length-1],
+        x1Max:sub1.length,x1Alg2Max:sub1Alg2.length,
         sub2:sub2, peaks2:peaks2.length, sub2Alg2:sub2Alg2,peaks2Alg2:peaks2Alg2.filter((el)=>el>0).length,
         sub2Max:sub2Max, sub2Min:sub2Min, sub2Alg2Max:sub2Alg2Max, sub2Alg2Min:sub2Alg2Min,
-        x2Max:sub2[sub2.length-1],x2Alg2Max:sub2Alg2[sub2Alg2.length-1],
+        x2Max:sub2.length,x2Alg2Max:sub2Alg2.length,
         sub3:sub3, peaks3:peaks3.length, sub3Alg2:sub3Alg2,peaks3Alg2:peaks3Alg2.filter((el)=>el>0).length,
         sub3Max:sub3Max, sub3Min:sub3Min, sub3Alg2Max:sub3Alg2Max, sub3Alg2Min:sub3Alg2Min,
-        x3Max:sub3[sub3.length-1],x3Alg2Max:sub3Alg2[sub3Alg2.length-1],
+        x3Max:sub3.length,x3Alg2Max:sub3Alg2.length,
         sub4:sub4, peaks4:peaks4.length, sub4Alg2:sub4Alg2,peaks4Alg2:peaks4Alg2.filter((el)=>el>0).length,
         sub4Max:sub4Max, sub4Min:sub4Min, sub4Alg2Max:sub4Alg2Max, sub4Alg2Min:sub4Alg2Min,
-        x4Max:sub4[sub4.length-1],x4Alg2Max:sub4Alg2[sub4Alg2.length-1]
+        x4Max:sub4.length,x4Alg2Max:sub4Alg2.length
     })
 });
 app.listen(PORT, () => console.log("The server is started"));
