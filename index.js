@@ -75,10 +75,10 @@ for(let i=1;i<sub1Alg2.length-1;i++){
     peaks1Alg2.push(sub1Alg2[i])
     else peaks1Alg2.push(0)
 }
-for(let i=0;i<peaks1Alg2.length-500 ;i++){
+for(let i=0;i<peaks1Alg2.length-1000 ;i++){
     let lastMax = 0;
     let lastMaxIndex = 0;
-        for(let j=i;j<i + 500;j++){
+        for(let j=i;j<i + 1000;j++){
             if(peaks1Alg2[j] > 0 && peaks1Alg2[j] <= lastMax){
                 peaks1Alg2[j] = 0;
             }
