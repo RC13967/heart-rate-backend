@@ -214,6 +214,4 @@ app.get("/getData", (request, response) => {
         x4Max:sub4.length,x4Alg2Max:sub4Alg2.length
     })
 });
-console.log(peaks1Alg2.filter((el)=>el>0).length, peaks2Alg2.filter((el)=>el>0).length, 
-peaks3Alg2.filter((el)=>el>0).length, peaks4Alg2.filter((el)=>el>0).length )
 app.listen(PORT, () => console.log("The server is started"));
